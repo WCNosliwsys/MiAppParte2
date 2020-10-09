@@ -32,4 +32,7 @@ public class Multimedia extends AppCompatActivity {
         startActivity(new Intent(this, Multimedia2.class));
     }
 
+    public void multimedia3(View view) {
+        startActivity(new Intent(this, Multimedia3.class));
+    }
 }
