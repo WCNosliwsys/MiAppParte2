@@ -2,6 +2,8 @@ package com.ditec.miappparte2;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -10,8 +12,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     @Override
@@ -112,5 +118,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void btnderecha(View view) {
+        Toast.makeText(this, "Se pulso el floating button de la derecha "+ view.getTag(), Toast.LENGTH_LONG).show();
+    }
+    public void btnizquierda(View view) {
+        Toast.makeText(this, "Se pulso el floating button de la izquierda "+ view.getTag(), Toast.LENGTH_LONG).show();
+    }
+
+
+    public void btntag(View view) {
+        if(view.getTag().equals("fabderecha"))
+            Toast.makeText(this, "Se pulso el floating button de la derecha "+ view.getTag(), Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(this, "Se pulso el floating button de la izquierda "+ view.getTag(), Toast.LENGTH_LONG).show();
+    }
+    public void fabizquierda(View view) {
+        Snackbar.make(view, "Replace with your own action",
+                Snackbar.LENGTH_LONG).setAction("Action", null).show();
+    }
+    Snackbar mibar;
+    public void fabderecha(View view) {
+
+        mibar= Snackbar.make(view,"¿Estás seguro?", Snackbar.LENGTH_INDEFINITE)
+                .setAction("SI", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mibar.dismiss();
+//tu evento
+                    }
+                });
+        mibar.show();
     }
 }
